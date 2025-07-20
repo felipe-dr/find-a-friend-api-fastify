@@ -1,0 +1,12 @@
+# Dependencies
+node_modules
+
+# Environments
+.env
+
+# Build
+build
+
+# Tests
+coverage
+/generated/prisma
