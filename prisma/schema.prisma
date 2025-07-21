@@ -1,0 +1,94 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String        @id @default(uuid())
+  email        String        @unique
+  passwordHash String        @map("password_hash")
+  createdAt    DateTime      @default(now()) @map("created_at")
+  organization Organization?
+
+  @@map("users")
+}
+
+model Organization {
+  id           String   @id @default(uuid())
+  name         String   @unique
+  postalCode   String   @map("postal_code")
+  street       String
+  neighborhood String
+  state        String
+  city         String
+  latitude     Decimal
+  longitude    Decimal
+  whatsApp     String   @map("whats_app")
+  userId       String   @unique @map("user_id")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  user User  @relation(fields: [userId], references: [id])
+  pets Pet[]
+
+  @@map("organizations")
+}
+
+model Size {
+  level       Int    @id
+  description String
+
+  pets Pet[]
+
+  @@map("sizes")
+}
+
+model EnergyLevel {
+  level       Int    @id
+  description String
+
+  pets Pet[]
+
+  @@map("energy_levels")
+}
+
+model IndependenceLevel {
+  level       Int    @id
+  description String
+
+  pets Pet[]
+
+  @@map("independence_levels")
+}
+
+model Pet {
+  id                   String   @id @default(uuid())
+  gender               Genders
+  name                 String
+  about                String
+  age                  Int
+  ageClassification    String   @map("age_classification")
+  sizeLevelId          Int      @map("size_level_id")
+  energyLevelId        Int      @map("energy_level_id")
+  independenceLevelId  Int      @map("independence_level_id")
+  environment          String
+  photos               String[]
+  donationRequirements String[] @map("donation_requirements")
+  organizationId       String   @map("organization_id")
+  createdAt            DateTime @default(now()) @map("created_at")
+
+  size              Size              @relation(fields: [sizeLevelId], references: [level])
+  energyLevel       EnergyLevel       @relation(fields: [energyLevelId], references: [level])
+  IndependenceLevel IndependenceLevel @relation(fields: [independenceLevelId], references: [level])
+  organization      Organization      @relation(fields: [organizationId], references: [id])
+
+  @@map("pets")
+}
+
+enum Genders {
+  DOG
+  CAT
+}
