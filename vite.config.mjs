@@ -4,20 +4,19 @@ import { defineConfig } from 'vitest/config'
 export default defineConfig({
   plugins: [tsconfigPaths()],
   test: {
-    dir: 'src',
-    workspace: [
+    projects: [
       {
         extends: true,
         test: {
           name: 'unit',
-          dir: 'src/use-cases',
+          include: 'src/**/use-cases/**/*.{spec,test}.ts',
         },
       },
       {
         extends: true,
         test: {
           name: 'e2e',
-          dir: 'src/http/controllers',
+          include: 'src/**/http/controllers/**/*.{spec,test}.ts',
           environment: `./prisma/vitest-environment-prisma/prisma-test-environment.ts`,
           teardown: 'process',
         },
