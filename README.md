@@ -73,17 +73,19 @@ API desenvolvida no desafio 03 em Node.js com o Fastify e Typescript, afim de po
 - [ ] Deve ser possível listar todos os pets disponíveis para adoção em uma cidade;
 - [ ] Deve ser possível filtrar pets por suas características;
 - [ ] Deve ser possível visualizar detalhes de um pet para adoção;
-- [ ] Deve ser possível se cadastrar como uma organização;
+- [x] Deve ser possível se cadastrar como uma organização;
 - [ ] Deve ser possível realizar login como uma organização;
+- [x] Deve ser possível obter dados do endereço através do fornecimento do CEP **( Adicional )**;
 
 ### Negócios
 
 - [ ] Para listar os pets, obrigatoriamente precisamos informar a cidade;
-- [ ] Uma organização precisa ter um endereço e um número de WhatsApp;
+- [x] Uma organização precisa ter um endereço e um número de WhatsApp;
 - [ ] Um pet deve estar ligado a uma organização;
 - [ ] O usuário que quer adotar, entrará em contato com a organização via WhatsApp;
 - [ ] Todos os filtros, além da cidade, são opcionais;
 - [ ] Para uma organização acessar a aplicação como admin, ela precisa estar logada;
+- [x] Ao cadastrar uma organização deve-se obter os dados da latitude e longitude de sua localização previamente para serem armazenados **( Adicional )**;
 
 ### Não funcionais
 
