@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it } from 'vitest'
 
 import { InMemoryUsersRepository } from '@/features/users/repositories'
 
-import { UserAlreadyExistsError } from '../errors/user-already-exists.error'
+import { UserAlreadyExistsError } from '../errors'
 import { CreateUserUseCase } from './create-user.usecase'
 
 let usersRepository: InMemoryUsersRepository

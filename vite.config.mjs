@@ -9,14 +9,14 @@ export default defineConfig({
         extends: true,
         test: {
           name: 'unit',
-          include: 'src/**/use-cases/**/*.{spec,test}.ts',
+          include: ['src/**/use-cases/**/*.{spec,test}.ts'],
         },
       },
       {
         extends: true,
         test: {
           name: 'e2e',
-          include: 'src/**/http/controllers/**/*.{spec,test}.ts',
+          include: ['src/**/http/controllers/**/*.{spec,test}.ts'],
           environment: `./prisma/vitest-environment-prisma/prisma-test-environment.ts`,
           teardown: 'process',
         },
