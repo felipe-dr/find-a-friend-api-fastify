@@ -6,17 +6,17 @@ import { UsersRepository } from '../interfaces/users.repository'
 export class InMemoryUsersRepository implements UsersRepository {
   public users: User[] = []
 
-  public async create(user: Prisma.UserCreateInput): Promise<User> {
-    const userData = {
+  public async create(data: Prisma.UserCreateInput): Promise<User> {
+    const user = {
       id: randomUUID(),
-      email: user.email,
-      passwordHash: user.passwordHash,
+      email: data.email,
+      passwordHash: data.passwordHash,
       createdAt: new Date(),
     }
 
-    this.users.push(userData)
+    this.users.push(user)
 
-    return userData
+    return user
   }
 
   public async getByEmail(email: string): Promise<User | null> {
