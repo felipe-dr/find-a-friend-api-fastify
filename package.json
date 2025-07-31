@@ -29,6 +29,7 @@
     "test:ui": "vitest --ui"
   },
   "devDependencies": {
+    "@faker-js/faker": "^9.9.0",
     "@rocketseat/eslint-config": "^2.2.2",
     "@types/bcryptjs": "^3.0.0",
     "@types/node": "^24.0.15",
