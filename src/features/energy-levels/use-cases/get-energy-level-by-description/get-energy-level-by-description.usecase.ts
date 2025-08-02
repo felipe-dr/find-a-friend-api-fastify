@@ -1,6 +1,7 @@
 import { EnergyLevel } from '@prisma/client'
 
 import { EnergyLevelsRepository } from '@/features/energy-levels/repositories'
+
 import { ResourceNotFoundError } from '@/shared/use-cases/errors'
 
 interface GetEnergyLevelByDescriptionUseCaseRequest {
