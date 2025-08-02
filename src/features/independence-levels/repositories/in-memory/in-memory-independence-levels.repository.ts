@@ -24,7 +24,9 @@ export class InMemoryIndependenceLevelsRepository
     description: string,
   ): Promise<IndependenceLevel | null> {
     const independenceLevel = this.independenceLevel.find(
-      (independenceLevel) => independenceLevel.description === description,
+      (independenceLevel) =>
+        independenceLevel.description.toLowerCase() ===
+        description.toLowerCase(),
     )
 
     if (!independenceLevel) {

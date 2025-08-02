@@ -22,7 +22,8 @@ export class InMemoryEnergyLevelsRepository implements EnergyLevelsRepository {
     description: string,
   ): Promise<EnergyLevel | null> {
     const energyLevel = this.energyLevels.find(
-      (energyLevel) => energyLevel.description === description,
+      (energyLevel) =>
+        energyLevel.description.toLowerCase() === description.toLowerCase(),
     )
 
     if (!energyLevel) {
