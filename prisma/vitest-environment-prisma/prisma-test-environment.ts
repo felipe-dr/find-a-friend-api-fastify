@@ -27,7 +27,7 @@ export default <Environment>{
     process.env.DATABASE_URL = databaseUrl
 
     execSync('npx prisma migrate deploy')
-    console.log(process.env.DATABASE_URL)
+
     return {
       async teardown() {
         await prisma.$executeRawUnsafe(
