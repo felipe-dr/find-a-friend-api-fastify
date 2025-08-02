@@ -2,9 +2,9 @@ import { beforeEach, describe, expect, it } from 'vitest'
 
 import { InMemoryEnergyLevelsRepository } from '@/features/energy-levels/repositories'
 
-import { GetEnergyLevelByDescriptionUseCase } from './get-energy-level-by-description.usecase'
-
 import { ResourceNotFoundError } from '@/shared/use-cases/errors'
+
+import { GetEnergyLevelByDescriptionUseCase } from './get-energy-level-by-description.usecase'
 
 let energyLevelsRepository: InMemoryEnergyLevelsRepository
 let sut: GetEnergyLevelByDescriptionUseCase
