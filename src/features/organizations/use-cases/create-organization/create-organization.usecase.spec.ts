@@ -5,6 +5,8 @@ import { InMemoryOrganizationsRepository } from '@/features/organizations/reposi
 import { InMemoryUsersRepository } from '@/features/users/repositories'
 import { CreateUserUseCase } from '@/features/users/use-cases'
 
+import { makeOrganizationFactory } from 'tests/factories'
+
 import { OrganizationAlreadyExistsError } from '../errors'
 import { CreateOrganizationUseCase } from './create-organization.usecase'
 
@@ -29,63 +31,23 @@ describe('Create Organization Use Case', () => {
   })
 
   it('should be able to create an organization', async () => {
-    const { organization } = await sut.execute({
-      name: 'My Best Friend Pet',
-      postalCode: '06410000',
-      street: 'Joaquim Cardoso',
-      neighborhood: 'Freguesia do Ó',
-      state: 'SP',
-      city: 'São Paulo',
-      whatsApp: '1197846658',
-      email: 'john.doe@test.com',
-      password: '123456',
-    })
+    const { organization } = await sut.execute(
+      makeOrganizationFactory({ postalCode: '06410000' }),
+    )
 
     expect(organization.id).toEqual(expect.any(String))
   })
 
   it('should not be able to create an organization with same name', async () => {
-    const organizationName = 'My Best Friend Pet'
-
-    await sut.execute({
-      name: organizationName,
-      postalCode: '06410000',
-      street: 'Joaquim Cardoso',
-      neighborhood: 'Freguesia do Ó',
-      state: 'SP',
-      city: 'São Paulo',
-      whatsApp: '1197846658',
-      email: 'emma.doe@test.com',
-      password: '123456',
-    })
+    const { organization } = await sut.execute(makeOrganizationFactory())
 
     await expect(async () => {
-      await sut.execute({
-        name: organizationName,
-        postalCode: '06410000',
-        street: 'Joaquim Cardoso',
-        neighborhood: 'Freguesia do Ó',
-        state: 'SP',
-        city: 'São Paulo',
-        whatsApp: '1197846658',
-        email: 'john.doe@test.com',
-        password: '123456',
-      })
+      await sut.execute(makeOrganizationFactory({ name: organization.name }))
     }).rejects.toBeInstanceOf(OrganizationAlreadyExistsError)
   })
 
   it('should be able to create an organization with latitude or longitude equal to 0', async () => {
-    const { organization } = await sut.execute({
-      name: 'My Best Friend Pet',
-      postalCode: '12345678',
-      street: 'Joaquim Cardoso',
-      neighborhood: 'Freguesia do Ó',
-      state: 'SP',
-      city: 'São Paulo',
-      whatsApp: '1197846658',
-      email: 'john.doe@test.com',
-      password: '123456',
-    })
+    const { organization } = await sut.execute(makeOrganizationFactory())
 
     expect(organization.id).toEqual(expect.any(String))
     expect(Number(organization.latitude)).toEqual(0)
