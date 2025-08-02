@@ -69,29 +69,29 @@ API desenvolvida no desafio 03 em Node.js com o Fastify e Typescript, afim de po
 
 ### Funcionais
 
-- [ ] Deve ser possível cadastrar um pet;
-- [ ] Deve ser possível listar todos os pets disponíveis para adoção em uma cidade;
-- [ ] Deve ser possível filtrar pets por suas características;
-- [ ] Deve ser possível visualizar detalhes de um pet para adoção;
+- [x] Deve ser possível cadastrar um pet;
+- [x] Deve ser possível listar todos os pets disponíveis para adoção em uma cidade;
+- [x] Deve ser possível filtrar pets por suas características;
+- [x] Deve ser possível visualizar detalhes de um pet para adoção;
 - [x] Deve ser possível se cadastrar como uma organização;
 - [ ] Deve ser possível realizar login como uma organização;
 - [x] Deve ser possível obter dados do endereço através do fornecimento do CEP **( Adicional )**;
 
 ### Negócios
 
-- [ ] Para listar os pets, obrigatoriamente precisamos informar a cidade;
+- [x] Para listar os pets, obrigatoriamente precisamos informar a cidade;
 - [x] Uma organização precisa ter um endereço e um número de WhatsApp;
-- [ ] Um pet deve estar ligado a uma organização;
-- [ ] O usuário que quer adotar, entrará em contato com a organização via WhatsApp;
-- [ ] Todos os filtros, além da cidade, são opcionais;
+- [x] Um pet deve estar ligado a uma organização;
+- [x] O usuário que quer adotar, entrará em contato com a organização via WhatsApp;
+- [x] Todos os filtros, além da cidade, são opcionais;
 - [ ] Para uma organização acessar a aplicação como admin, ela precisa estar logada;
 - [x] Ao cadastrar uma organização deve-se obter os dados da latitude e longitude de sua localização previamente para serem armazenados **( Adicional )**;
 
 ### Não funcionais
 
 - [ ] O usuário deve ser identificado por um JWT;
-- [ ] A senha do usuário deve ser criptografada;
-- [ ] Todas as consultas que retornam listas de dados devem ser paginadas;
+- [x] A senha do usuário deve ser criptografada;
+- [x] Todas as consultas que retornam listas de dados devem ser paginadas;
 
 ## Arquitetura
 
