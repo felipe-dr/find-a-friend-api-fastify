@@ -1,8 +1,10 @@
-import { beforeEach, describe, expect, it } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { BrasilApiRepository } from '@/features/locations/repositories'
 
 import { GetAddressAndGeolocationByPostalCodeUseCase } from './get-address-and-geolocation-by-postal-code.usecase'
+
+import { brasilApiRepositoryMock } from 'tests/mocks'
 
 import { BrasilApiError } from '../errors'
 
@@ -11,7 +13,7 @@ let sut: GetAddressAndGeolocationByPostalCodeUseCase
 
 describe('Get Address and Geolocation by Postal Code Use Case', () => {
   beforeEach(async () => {
-    locationsRepository = new BrasilApiRepository()
+    locationsRepository = brasilApiRepositoryMock()
     sut = new GetAddressAndGeolocationByPostalCodeUseCase(locationsRepository)
   })
 
@@ -21,11 +23,15 @@ describe('Get Address and Geolocation by Postal Code Use Case', () => {
     const { addressAndGeolocation } = await sut.execute({ postalCode })
 
     expect(addressAndGeolocation?.postalCode).toEqual(postalCode)
-    expect(addressAndGeolocation?.latitude).toEqual(expect.any(String))
-    expect(addressAndGeolocation?.longitude).toEqual(expect.any(String))
+    expect(Number(addressAndGeolocation.latitude)).toBeLessThan(0)
+    expect(Number(addressAndGeolocation.longitude)).toBeLessThan(0)
   })
 
   it('should not be able to get addrress and geolocation with invalid postal code', async () => {
+    vi.spyOn(
+      locationsRepository,
+      'getAddressAndGeolocationByPostalCode',
+    ).mockResolvedValue(null)
     const postalCode = '12345678'
 
     await expect(async () => {

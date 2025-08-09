@@ -11,6 +11,7 @@ import { InMemoryUsersRepository } from '@/features/users/repositories'
 import { CreateUserUseCase } from '@/features/users/use-cases'
 
 import { makeOrganizationFactory, makePetFactory } from 'tests/factories'
+import { brasilApiRepositoryMock } from 'tests/mocks'
 
 import { SearchAllPetsUseCase } from './search-all-pets.usecase'
 
@@ -29,7 +30,7 @@ describe('Search All Pets Use Case', () => {
   beforeEach(async () => {
     usersRepository = new InMemoryUsersRepository()
     organizationsRepository = new InMemoryOrganizationsRepository()
-    locationsRepository = new BrasilApiRepository()
+    locationsRepository = brasilApiRepositoryMock()
     createUserUseCase = new CreateUserUseCase(usersRepository)
     createOrganizationUseCase = new CreateOrganizationUseCase(
       organizationsRepository,
