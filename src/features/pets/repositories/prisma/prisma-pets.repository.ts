@@ -40,7 +40,7 @@ export class PrismaPetsRespository implements PetsRepository {
           size: { description: { equals: query.size, mode: 'insensitive' } },
         }),
         ...(query.independenceLevel && {
-          IndependenceLevel: {
+          independenceLevel: {
             description: {
               equals: query.independenceLevel,
               mode: 'insensitive',
