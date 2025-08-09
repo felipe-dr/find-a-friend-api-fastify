@@ -3,6 +3,8 @@ import fastifyJwt from '@fastify/jwt'
 import fastify from 'fastify'
 import { ZodError } from 'zod'
 
+import { organizationsRoute } from '@/features/organizations/http/routes'
+import { petsRoute } from '@/features/pets/http/routes'
 import { usersRoute } from '@/features/users/http/routes'
 
 import { env } from './environments'
@@ -19,6 +21,8 @@ app.register(fastifyJwt, {
 app.register(fastifyCookie)
 
 app.register(usersRoute)
+app.register(organizationsRoute)
+app.register(petsRoute)
 
 app.setErrorHandler((error, _, reply) => {
   if (error instanceof ZodError) {

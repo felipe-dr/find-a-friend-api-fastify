@@ -1,4 +1,4 @@
-export function handleAgeClassification(age: number) {
+export function handleAgeClassificationUtil(age: number) {
   switch (true) {
     case age >= 10:
       return 'Old'

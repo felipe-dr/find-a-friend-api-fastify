@@ -1,11 +1,11 @@
-import { Pet } from '@prisma/client'
+import { Genders, Pet } from '@prisma/client'
 
 import { PetsRepository } from '@/features/pets/repositories'
 
-import { handleAgeClassification } from '@/shared/utilities'
+import { handleAgeClassificationUtil } from '@/shared/utilities'
 
 interface CreatePetUseCaseRequest {
-  gender: 'DOG' | 'CAT'
+  gender: Genders
   name: string
   about: string
   age: number
@@ -43,7 +43,7 @@ export class CreatePetUseCase {
       name,
       about,
       age,
-      ageClassification: handleAgeClassification(age),
+      ageClassification: handleAgeClassificationUtil(age),
       sizeLevelId,
       energyLevelId,
       independenceLevelId,

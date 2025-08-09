@@ -168,6 +168,12 @@ npx prisma generate
 npx prisma migrate deploy
 ```
 
+Executar o `seed`.
+
+```bash
+pnpm prisma:seed
+```
+
 Executar a aplicação.
 
 ```bash

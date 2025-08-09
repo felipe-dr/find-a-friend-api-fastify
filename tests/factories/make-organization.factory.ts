@@ -19,11 +19,11 @@ export function makeOrganizationFactory(
     name: overwrite?.name ?? faker.company.name(),
     postalCode: overwrite?.postalCode ?? faker.location.zipCode(),
     street: overwrite?.street ?? faker.location.street(),
-    neighborhood: overwrite?.postalCode ?? faker.location.streetAddress(),
-    state: overwrite?.postalCode ?? faker.location.state(),
-    city: overwrite?.postalCode ?? faker.location.city(),
-    whatsApp: overwrite?.postalCode ?? faker.phone.number(),
-    email: overwrite?.postalCode ?? faker.internet.email(),
-    password: overwrite?.postalCode ?? faker.internet.password(),
+    neighborhood: overwrite?.neighborhood ?? faker.location.streetAddress(),
+    state: overwrite?.state ?? faker.location.state(),
+    city: overwrite?.city ?? faker.location.city(),
+    whatsApp: overwrite?.whatsApp ?? faker.phone.number(),
+    email: overwrite?.email ?? faker.internet.email(),
+    password: overwrite?.password ?? faker.internet.password(),
   }
 }
