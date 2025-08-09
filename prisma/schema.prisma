@@ -82,7 +82,7 @@ model Pet {
 
   size              Size              @relation(fields: [sizeLevelId], references: [level])
   energyLevel       EnergyLevel       @relation(fields: [energyLevelId], references: [level])
-  IndependenceLevel IndependenceLevel @relation(fields: [independenceLevelId], references: [level])
+  independenceLevel IndependenceLevel @relation(fields: [independenceLevelId], references: [level])
   organization      Organization      @relation(fields: [organizationId], references: [id])
 
   @@map("pets")
