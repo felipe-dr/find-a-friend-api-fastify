@@ -8,14 +8,14 @@ export async function SearchAllPetsController(
   reply: FastifyReply,
 ) {
   const searchAllPetsQuerySchema = z.object({
-    city: z.string(),
+    city: z.string().min(1),
     gender: z.string().optional(),
     ageClassification: z.string().optional(),
     energyLevel: z.string().optional(),
     size: z.string().optional(),
     independenceLevel: z.string().optional(),
     environment: z.string().optional(),
-    page: z.number().optional(),
+    page: z.coerce.number().optional(),
   })
 
   const {
