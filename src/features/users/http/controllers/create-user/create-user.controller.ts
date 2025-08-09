@@ -12,20 +12,20 @@ export async function createUserController(
 ) {
   const createUserBodySchema = z.object({
     email: z.email(),
-    password: z.string(),
+    password: z.string().min(6),
   })
 
   const { email, password } = createUserBodySchema.parse(request.body)
 
   try {
-    const createUserUseCase = await makeCreateUserFactory()
+    const createUserUseCase = makeCreateUserFactory()
 
     const { user } = await createUserUseCase.execute({ email, password })
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { passwordHash, ...userWithoutPassword } = user
 
-    return reply.status(201).send(userWithoutPassword)
+    return reply.status(201).send({ user: userWithoutPassword })
   } catch (error: unknown) {
     if (error instanceof UserAlreadyExistsError) {
       return reply.status(409).send({ message: error.message })
