@@ -3,6 +3,8 @@ import z from 'zod'
 
 import { makeGetPetByIdFactory } from '@/features/pets/use-cases/factories'
 
+import { ResourceNotFoundError } from '@/shared/use-cases/errors'
+
 export async function GetPetByIdController(
   request: FastifyRequest,
   reply: FastifyReply,
@@ -21,5 +23,9 @@ export async function GetPetByIdController(
     })
 
     return reply.status(200).send({ pet })
-  } catch (error: unknown) {}
+  } catch (error: unknown) {
+    if (error instanceof ResourceNotFoundError) {
+      return reply.status(404).send({ message: error.message })
+    }
+  }
 }
