@@ -93,6 +93,8 @@ API desenvolvida no desafio 03 em Node.js com o Fastify e Typescript, afim de po
 - [x] A senha do usuário deve ser criptografada;
 - [x] Todas as consultas que retornam listas de dados devem ser paginadas;
 
+> Futuramente será adicionado o Swagger
+
 ## Arquitetura
 
 - SOLID
